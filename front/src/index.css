@@ -1,0 +1,40 @@
+html,
+body {
+    height: 100%;
+}
+#auth__form-container {
+    background-color: lightblue;
+    justify-content: center;
+
+}
+#card-holder {
+    min-height: 100px;	
+    background-color: lightgray;		
+    -webkit-transition: width 0.3s ease;
+    -moz-transition: width 0.3s ease;
+    -o-transition: width 0.3s ease;
+    transition: width 0.3s ease;
+}
+#cart-container {
+    min-height: 100px;
+    background-color: lightyellow;
+    -webkit-transition: margin 0.3 ease;
+    -moz-transition: margin 0.3s ease;
+    -o-transition: margin 0.3s ease;
+    transition: margin 0.3s ease;
+}
+#main-row {
+    overflow-x: hidden; /* necessary to hide collapsed sidebar */
+    height: 60em;
+}
+
+/* if on mobile, delete the row*/
+.collapsed {
+    display: none;
+}
+@media (min-width: 992px) {
+.collapsed {
+    display: block;
+    margin-right: -25%; /* same width as 3md cart */
+    }
+}
