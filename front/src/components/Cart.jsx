@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // We will later construct the function to build rows of items in the cart later
-// For Now we have placeholders and the button
+// For Now we have placeholders and the button1
 const Cart = () => {
     // When we work on the cart in detail we will build a list of the items in our cart
     // we will render the items in the cart based upon what is in this list of items
