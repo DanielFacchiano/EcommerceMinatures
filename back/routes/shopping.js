@@ -14,4 +14,28 @@ router.get('/', function(req, res, next){
     });
 });
 
+router.post('/', function(req, res, next){
+    var queryString = req.body.queryString;
+    var lQueryString = queryString.toLowerCase();
+    rowArray = [];
+    console.log("in route shopping getting rows")
+    db.pool.query(`SELECT * FROM Items`, function(err, rows){
+        if(err){
+            next(err);
+            return;
+        }
+		console.log(rows);
+        rowArray = rows.filter((object) =>{
+            if (object.tags.includes(lQueryString)){
+                return true;
+            }
+            else{
+                return false;
+            }
+        });
+        console.log(rowArray);
+        //res.json(rowArray);
+    });
+});
+
 module.exports = router;
