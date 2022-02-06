@@ -2,10 +2,12 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const PORT = 3005;
+
 const shopping = require("./routes/shopping.js")
 app.use(express.urlencoded());
 app.use(cors());
 app.use(express.json());
+app.use(express.static('public'))
 
 app.get('/', (req, res) => {
     res.send('Hola, Amigo')

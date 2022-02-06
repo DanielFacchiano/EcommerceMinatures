@@ -9,8 +9,7 @@ router.get('/', function(req, res, next){
             next(err);
             return;
         }
-		console.log(rows);
-        //res.json(rows);
+        res.json(rows);
     });
 });
 
@@ -26,15 +25,10 @@ router.post('/', function(req, res, next){
         }
 		console.log(rows);
         rowArray = rows.filter((object) =>{
-            if (object.tags.includes(lQueryString)){
-                return true;
-            }
-            else{
-                return false;
-            }
+            return (object.tags.includes(lQueryString))
         });
         console.log(rowArray);
-        //res.json(rowArray);
+        res.json(rowArray);
     });
 });
 
