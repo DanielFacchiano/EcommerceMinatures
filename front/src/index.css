@@ -10,17 +10,13 @@ body {
 #card-holder {
     min-height: 100px;	
     background-color: lightgray;		
-    -webkit-transition: width 0.3s ease;
-    -moz-transition: width 0.3s ease;
-    -o-transition: width 0.3s ease;
+
     transition: width 0.3s ease;
 }
 #cart-container {
     min-height: 100px;
     background-color: lightyellow;
-    -webkit-transition: margin 0.3 ease;
-    -moz-transition: margin 0.3s ease;
-    -o-transition: margin 0.3s ease;
+
     transition: margin 0.3s ease;
 }
 #main-row {

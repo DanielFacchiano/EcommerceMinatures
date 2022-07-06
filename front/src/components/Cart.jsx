@@ -1,12 +1,32 @@
 import React, { useState } from "react";
+import axios from 'axios'
+import CartItem from "./CartItem";
+import Cookies from 'universal-cookie'
 
-// We will later construct the function to build rows of items in the cart later
-// For Now we have placeholders and the button1
-const Cart = () => {
-    // When we work on the cart in detail we will build a list of the items in our cart
-    // we will render the items in the cart based upon what is in this list of items
-    const [cartList, setCartList] = useState([]);
 
+
+/*
+    The cart component that is hoisted onto the main shopping page and slides in and oout
+    calculates a total and renders the cart items inside of it
+*/
+const Cart = ({cartList, setCartList, setCheckout}) => {
+// We calculate totals for all items in the cart
+    const getTotal = () => 
+    {
+        var total = 0;
+        for (var x = 0; x < cartList.length; x++)
+        {
+            total = total + parseFloat(cartList[x].quantity)*parseFloat(cartList[x].itemPrice).toFixed(2)
+        }
+        return total;
+    }
+    // navigate to checkout
+    const handleCheckout = () =>
+    {
+        setCheckout(true);
+    }
+  
+    // JSX html for cart, maps cartItemInfo to a cart item for every item in the users cart
   return (
     <div className="container">
         <div className="row">
@@ -16,10 +36,17 @@ const Cart = () => {
         </div>
         <div className="row">
             <p> Cart items cards filled here</p>
+            { cartList.map((cartItemInfo)=>( 
+                <CartItem cartItemInfo = {cartItemInfo} setCartList = {setCartList}/>
+                ))}             
         </div>
+        <div style ={{padding:".5em", textAlign:"center"}}>
+            Total: ${getTotal().toFixed(2)} 
+        </div>
+
         <div className="row">
             <div className="col" style={{textAlign : "center" }} >
-            <button className="btn btn-success" type="submit" >
+            <button className="btn btn-success" type="submit" onClick={handleCheckout}>
             Checkout
             </button>
                 </div>

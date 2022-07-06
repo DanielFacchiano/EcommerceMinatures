@@ -1,6 +1,8 @@
 const express = require('express')
 var db = require('../sql/db-connector');
-
+/*
+    Route to return all of the items present in the webstore
+*/
 const router = express.Router();
 router.get('/', function(req, res, next){
     console.log("in route shopping getting rows")
@@ -12,7 +14,9 @@ router.get('/', function(req, res, next){
         res.json(rows);
     });
 });
-
+/*
+    Route to get items thats tags attribute contains the passed in query string
+*/
 router.post('/', function(req, res, next){
     var queryString = req.body.queryString;
     var lQueryString = queryString.toLowerCase();

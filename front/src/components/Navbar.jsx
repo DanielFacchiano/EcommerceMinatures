@@ -10,9 +10,16 @@ const cookies = new Cookies();
 // https://getbootstrap.com/docs/5.1/components/navbar/
 
 
+/*
+  The navigation bar present in the main shopping page, lets user hit the sign in button
+  and allows users access to the search input to search fro specific item cards
+*/
+const Navbar = ({ setToggleCart, toggleCart, setItemsList, setSignIn}) => {
 
-const Navbar = ({ setToggleCart, toggleCart, setItemsList}) => {
-
+  /*
+    posts a query string to the shopping route, returns the items with this
+    search string present in their item tags
+  */
   const postItems = async (queryString) => {
     let url = "http://localhost:3005/shopping"
     let payload = {queryString : queryString}
@@ -22,24 +29,26 @@ const Navbar = ({ setToggleCart, toggleCart, setItemsList}) => {
     console.log(data)
     setItemsList(data);
   }
-
+  // when the search button is hit, get the query string and post it.
   const handleSearchSubmit = (event) =>
   {
     event.preventDefault();
     var queryString = document.getElementById("searchBar").value;
     postItems(queryString);
   }
-
+  // navigate to the sign in page
   const handleSignIn = (event) => {
-    cookies.set('userId', 1, {sameSite: 'lax'});
-    console.log(cookies.get("userId"));
+    //cookies.set('userId', 1, {sameSite: 'lax'});
+    setSignIn(true);
+    //console.log(cookies.get("userId"));
   }
-
+  // remove user from cookies
   const handleSignOut = (event) => {
     cookies.set('userId', null, {sameSite: 'lax'});
     console.log("")
   }
-
+  // renders the navbar, many parts adapted from the above bootstrap websites template (linked above)
+  // renders the current user name in cookies, the search inputs, and other important navbar html components
   return (
     <div>
       <nav className="navbar navbar-light bg-light">
@@ -57,8 +66,9 @@ const Navbar = ({ setToggleCart, toggleCart, setItemsList}) => {
               Search Tags
             </button>
           </form>
+            {cookies.get("userId") && cookies.get("userId") != 'null' ? <p>Not {cookies.get("userName")}?</p>: ""}
           <button className="btn btn-info" onClick={handleSignIn}>
-              Sign In
+            {cookies.get("userId") && cookies.get("userId") != 'null' ? <p>Change User</p>: <p>Sign In</p>}
             </button>
             <div id='cartHolder'>          
             <CartIcon 

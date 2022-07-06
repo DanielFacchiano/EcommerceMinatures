@@ -2,13 +2,18 @@ import React, { useState } from "react";
 import ItemCard from "./ItemCard";
 
 
-
-const ItemContainer = ({itemsList}) => {
+/*
+  holds the cart items, renders them in 16 bootstrap slots, facilates chaning pages by incrementing
+  the items to appear in the 16 slots by the next 16 items received from the server in the items array.
+*/
+const ItemContainer = ({itemsList, setCartList, setSignIn, cartList}) => {
   // When we work on the item container in detail, we will retreive a list of items
   // we will build the items in the container with the information in the list of items
 
+  // holds what page we are on, how much to increment from the start in the array
   const [pageIncrement, setPageIncrement] = React.useState(0);
-
+  // on new page, set a new page to active, (highlight it on front) and increment the state which
+  // will autmatically update the page because thats how react works
   const handleNewPage = (event) => {
     var oldPage = document.getElementsByClassName("pageactive")[0];
     oldPage.className = "";
@@ -17,7 +22,7 @@ const ItemContainer = ({itemsList}) => {
     var pnum = parseInt(newPage.textContent);
     setPageIncrement((pnum-1)*16)
   }
-
+  // build our 16 items in our 16 slots...
   return (
     <div className="container">
       <div className="row " >
@@ -30,6 +35,9 @@ const ItemContainer = ({itemsList}) => {
               { 0 + pageIncrement < itemsList.length ?
               (itemsList[0 + pageIncrement] != null ?
                <ItemCard
+               cartList={cartList}
+               setSignIn={setSignIn}
+               setCartList={setCartList}
                itemInfo = {itemsList[0 + pageIncrement]}
                />: 
                "Loading Item Card...") : "" }
@@ -38,6 +46,9 @@ const ItemContainer = ({itemsList}) => {
               { 1 + pageIncrement < itemsList.length ?
               (itemsList[1 + pageIncrement] != null ?
                <ItemCard
+               cartList={cartList}
+               setSignIn={setSignIn}
+               setCartList={setCartList}
                itemInfo = {itemsList[1 + pageIncrement]}
                />: 
                "Loading Item Card...") : "" }     
@@ -46,6 +57,9 @@ const ItemContainer = ({itemsList}) => {
               { 2 + pageIncrement < itemsList.length ?
               (itemsList[2 + pageIncrement] != null ?
                <ItemCard
+               cartList={cartList}
+               setSignIn={setSignIn}
+               setCartList={setCartList}
                itemInfo = {itemsList[2 + pageIncrement]}
                />: 
                "Loading Item Card...") : "" }     
@@ -54,6 +68,9 @@ const ItemContainer = ({itemsList}) => {
               { 3 + pageIncrement < itemsList.length ?
               (itemsList[3 + pageIncrement] != null ?
                <ItemCard
+               cartList={cartList}
+               setSignIn={setSignIn}
+               setCartList={setCartList}
                itemInfo = {itemsList[3 + pageIncrement]}
                />: 
                "Loading Item Card...") : "" }     
@@ -62,6 +79,9 @@ const ItemContainer = ({itemsList}) => {
               { 4 + pageIncrement < itemsList.length ?
               (itemsList[4 + pageIncrement] != null ?
                <ItemCard
+               cartList={cartList}
+               setSignIn={setSignIn}
+               setCartList={setCartList}
                itemInfo = {itemsList[4 + pageIncrement]}
                />: 
                "Loading Item Card...") : "" }     
@@ -70,6 +90,9 @@ const ItemContainer = ({itemsList}) => {
               { 5 + pageIncrement < itemsList.length ?
               (itemsList[5 + pageIncrement] != null ?
                <ItemCard
+               cartList={cartList}
+               setSignIn={setSignIn}
+               setCartList={setCartList}
                itemInfo = {itemsList[5 + pageIncrement]}
                />: 
                "Loading Item Card...") : "" }     
@@ -78,6 +101,9 @@ const ItemContainer = ({itemsList}) => {
               { 6 + pageIncrement < itemsList.length ?
               (itemsList[6 + pageIncrement] != null ?
                <ItemCard
+               cartList={cartList}
+               setSignIn={setSignIn}
+               setCartList={setCartList}
                itemInfo = {itemsList[6 + pageIncrement]}
                />: 
                "Loading Item Card...") : "" }     
@@ -86,6 +112,9 @@ const ItemContainer = ({itemsList}) => {
               { 7 + pageIncrement < itemsList.length ?
               (itemsList[7 + pageIncrement] != null ?
                <ItemCard
+               cartList={cartList}
+               setSignIn={setSignIn}
+               setCartList={setCartList}
                itemInfo = {itemsList[7 + pageIncrement]}
                />: 
                "Loading Item Card...") : "" }     
@@ -94,6 +123,9 @@ const ItemContainer = ({itemsList}) => {
               { 8 + pageIncrement < itemsList.length ?
               (itemsList[8 + pageIncrement] != null ?
                <ItemCard
+               cartList={cartList}
+               setSignIn={setSignIn}
+               setCartList={setCartList}
                itemInfo = {itemsList[8 + pageIncrement]}
                />: 
                "Loading Item Card...") : "" }     
@@ -102,6 +134,9 @@ const ItemContainer = ({itemsList}) => {
               { 9 + pageIncrement < itemsList.length ?
               (itemsList[9 + pageIncrement] != null ?
                <ItemCard
+               cartList={cartList}
+               setSignIn={setSignIn}
+               setCartList={setCartList}
                itemInfo = {itemsList[9 + pageIncrement]}
                />: 
                "Loading Item Card...") : "" }     
@@ -110,6 +145,9 @@ const ItemContainer = ({itemsList}) => {
               { 10 + pageIncrement < itemsList.length ?
               (itemsList[10 + pageIncrement] != null ?
                <ItemCard
+               cartList={cartList}
+               setSignIn={setSignIn}
+               setCartList={setCartList}
                itemInfo = {itemsList[10 + pageIncrement]}
                />: 
                "Loading Item Card...") : "" }     
@@ -118,6 +156,9 @@ const ItemContainer = ({itemsList}) => {
               { 11 + pageIncrement < itemsList.length ?
               (itemsList[11 + pageIncrement] != null ?
                <ItemCard
+               cartList={cartList}
+               setSignIn={setSignIn}
+               setCartList={setCartList}
                itemInfo = {itemsList[11 + pageIncrement]}
                />: 
                "Loading Item Card...") : "" }     
@@ -126,6 +167,9 @@ const ItemContainer = ({itemsList}) => {
               { 12 + pageIncrement < itemsList.length ?
               (itemsList[12 + pageIncrement] != null ?
                <ItemCard
+               cartList={cartList}
+               setSignIn={setSignIn}
+               setCartList={setCartList}
                itemInfo = {itemsList[12 + pageIncrement]}
                />: 
                "Loading Item Card...") : "" }     
@@ -134,6 +178,9 @@ const ItemContainer = ({itemsList}) => {
               { 13 + pageIncrement < itemsList.length ?
               (itemsList[13 + pageIncrement] != null ?
                <ItemCard
+               cartList={cartList}
+               setSignIn={setSignIn}
+               setCartList={setCartList}
                itemInfo = {itemsList[13 + pageIncrement]}
                />: 
                "Loading Item Card...") : "" }     
@@ -142,6 +189,9 @@ const ItemContainer = ({itemsList}) => {
               { 14 + pageIncrement < itemsList.length ?
               (itemsList[14 + pageIncrement] != null ?
                <ItemCard
+               cartList={cartList}
+               setSignIn={setSignIn}
+               setCartList={setCartList}
                itemInfo = {itemsList[14 + pageIncrement]}
                />: 
                "Loading Item Card...") : "" }     
@@ -150,6 +200,9 @@ const ItemContainer = ({itemsList}) => {
               { 15 + pageIncrement < itemsList.length ?
               (itemsList[15 + pageIncrement] != null ?
                <ItemCard
+               cartList={cartList}
+               setSignIn={setSignIn}
+               setCartList={setCartList}
                itemInfo = {itemsList[15 + pageIncrement]}
                />: 
                "Loading Item Card...") : "" }     
